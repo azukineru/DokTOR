@@ -38,7 +38,7 @@ include('function/core.php');
       <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="dashboard.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 DokTOR Justifikasi
             </a>
@@ -95,7 +95,7 @@ include('function/core.php');
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="index.html">
+                            <a href="dashboard.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
