@@ -140,19 +140,34 @@ include('function/core.php');
                                 <form role="form" action="" method="post">
                                     <div class="box-body">
                                         <div class="form-group">
-                                            <label for="tanggal_dokumen">Cost Center</label>
+                                            <label for="cost_center">Cost Center</label>
                                             <input type="text" class="form-control" name="cost_center">
                                         </div>
                                         <div class="form-group">
-                                            <label for="tanggal_dokumen">Unit</label>
-                                            <input type="text" class="form-control" name="unit">                                    
+                                            <label for="unit">Unit</label>
+                                            <select class="form-control" name="unit">
+                                                <option value="GA">GA</option>
+                                                <option value="IPA">IPA</option>
+                                                <option value="EPD">EPD</option>
+                                                <option value="BPD">BPD</option>
+                                                <option value="OPD">OPD</option>
+                                                <option value="SPD">SPD</option>
+                                                <option value="EPO">EPO</option>
+                                                <option value="BPO">BPO</option>
+                                                <option value="OPO">OPO</option>
+                                                <option value="SPO">SPO</option>
+                                                <option value="CIT">CIT</option>
+                                            </select>                               
                                         </div>
                                         <div class="form-group">
-                                            <label for="tanggal_dokumen">Jenis Dokumen</label>
-                                            <input type="text" class="form-control" name="jenis_dokumen">
+                                            <label for="jenis_dokumen">Jenis Dokumen</label>                                            
+                                            <select class="form-control" name="jenis_dokumen">
+                                                <option value="OPEX">OPEX</option>
+                                                <option value="CAPEX">CAPEX</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="tanggal_dokumen">Program / Kegiatan</label>
+                                            <label for="program">Program / Kegiatan</label>
                                             <textarea name="program" class="form-control" rows="3"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-default" name="simpan">Submit</button>

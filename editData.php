@@ -1,8 +1,13 @@
+<?php
+include('function/core.php');
+$id = $_GET['id'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>DokTOR Justifikasi | View Data</title>
+    <title>DokTOR Justifikasi | Edit Data</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- bootstrap 3.0.2 -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -101,9 +106,6 @@
         <aside class="right-side">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    List Data
-                </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li>Data</li>
@@ -117,22 +119,15 @@
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
-                    <section class="col-lg-12 connectedSortable"> 
-
-                        <table id="tabelDok" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nomor Dokumen</th>
-                                    <th>Tanggal</th>
-                                    <th>Cost Center</th>
-                                    <th>Unit</th>
-                                    <th>Jenis Dokumen</th>
-                                    <th>Program / Kegiatan</th>
-                                    <th>Option</th>
-                                </tr>
-                            </thead>
-                        </table>                                         
-
+                    <section class="col-lg-6 connectedSortable"> 
+                        <div class="box box-primary">   
+                            <div class="box-header">
+                                <h3 class="box-title">Data <?php echo $id; ?></h3>
+                            </div>                        
+                            <?php
+                            editData($id);
+                            ?>
+                        </div>
                     </section><!-- /.Left col -->
 
                 </div><!-- /.row (main row) -->
@@ -150,8 +145,6 @@
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="js/AdminLTE/app.js" type="text/javascript"></script>
-    <!-- page script -->
-    <script src="DataTables.js" type="text/javascript"></script>
 
 
 </body>

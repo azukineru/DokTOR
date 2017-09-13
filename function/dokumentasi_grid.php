@@ -1,67 +1,58 @@
-
 <?php
-	//include connection file 
-	include_once("connection.php");
-	 
-	// initilize all variable
-	$params = $columns = $totalRecords = $data = array();
-
-	$params = $_REQUEST;
-
-	//define index of column
-	$columns = array( 
-		0 => 'no_dokumen',
-		1 => 'tanggal_dokumen',
-		2 => 'cost_center',
-		3 => 'unit',
-		4 => 'jenis_dokumen',
-		5 => 'program'
-	);
-
-	$where = $sqlTot = $sqlRec = "";
-
-	// check search value exist
-	if( !empty($params['search']['value']) ) {   
-		$where .=" WHERE ";
-		$where .=" ( no_dokumen LIKE '".$params['search']['value']."%' ";    
-		$where .=" OR cost_center LIKE '".$params['search']['value']."%' ";
-		$where .=" OR unit LIKE '".$params['search']['value']."%' ";
-		$where .=" OR jenis_dokumen LIKE '".$params['search']['value']."%' ";
-		$where .=" OR program LIKE '".$params['search']['value']."%' )";
-	}
-
-	// getting total number records without any search
-	$sql = "SELECT no_dokumen, tanggal_dokumen, cost_center, unit, jenis_dokumen, program FROM `dokumentasi` ";
-	$sqlTot .= $sql;
-	$sqlRec .= $sql;
-	//concatenate search sql if value exist
-	if(isset($where) && $where != '')
-	{
-		$sqlTot .= $where;
-		$sqlRec .= $where;
-	}
-
-	$sqlRec .=  " LIMIT ".$params['start']." ,".$params['length']." ";
-
-	$queryTot = mysqli_query($conn, $sqlTot) or die("database error:". mysqli_error($conn));
-
-
-	$totalRecords = mysqli_num_rows($queryTot);
-
-	$queryRecords = mysqli_query($conn, $sqlRec) or die("Error to fetch data");
-
-	//iterate on results row and create new index array of data
-	while( $row = mysqli_fetch_row($queryRecords) ) { 
-		$data[] = $row;
-	}	
-
-	$json_data = array(
-			"draw"            => intval( $params['draw'] ),   
-			"recordsTotal"    => intval( $totalRecords ),  
-			"recordsFiltered" => intval($totalRecords),
-			"data"            => $data   // total data array
-			);
-
-	echo json_encode($json_data);  // send data as json format
-?>
-	
+ 
+/*
+ * DataTables example server-side processing script.
+ *
+ * Please note that this script is intentionally extremely simply to show how
+ * server-side processing can be implemented, and probably shouldn't be used as
+ * the basis for a large complex system. It is suitable for simple use cases as
+ * for learning.
+ *
+ * See http://datatables.net/usage/server-side for full details on the server-
+ * side processing requirements of DataTables.
+ *
+ * @license MIT - http://datatables.net/license_mit
+ */
+ 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Easy set variables
+ */
+ 
+// DB table to use
+$table = 'dokumentasi';
+ 
+// Table's primary key
+$primaryKey = 'no_dokumen';
+ 
+// Array of database columns which should be read and sent back to DataTables.
+// The `db` parameter represents the column name in the database, while the `dt`
+// parameter represents the DataTables column identifier. In this case object
+// parameter names
+$columns = array(
+    array( 'db' => 'no_dokumen', 'dt' => 'no_dokumen' ),
+    array( 'db' => 'tanggal_dokumen',  'dt' => 'tanggal_dokumen' ),
+    array( 'db' => 'cost_center',   'dt' => 'cost_center' ),
+    array( 'db' => 'unit',     'dt' => 'unit' ),
+    array( 'db' => 'jenis_dokumen',     'dt' => 'jenis_dokumen' ),
+    array( 'db' => 'program',     'dt' => 'program' )
+);
+ 
+// SQL server connection information
+$sql_details = array(
+    'user' => 'root',
+    'pass' => '',
+    'db'   => 'db_doktor',
+    'host' => 'localhost'
+);
+ 
+ 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * If you just want to use the basic configuration for DataTables with PHP
+ * server-side, there is no need to edit below this line.
+ */
+ 
+require( 'ssp.class.php' );
+ 
+echo json_encode(
+    SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
+);
