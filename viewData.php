@@ -1,3 +1,7 @@
+<?php
+include('function/session.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +18,7 @@
     <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -39,14 +44,14 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
-                            <span>Admin<i class="caret"></i></span>
+                            <span><?php echo $login_name ?><i class="caret"></i></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header bg-light-blue">
                                 <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                 <p>
-                                    Admin
+                                    <?php echo $login_name ?>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -55,7 +60,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="function/logout.php" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -150,6 +155,7 @@
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="js/AdminLTE/app.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <!-- page script -->
     <script src="DataTables.js" type="text/javascript"></script>
 

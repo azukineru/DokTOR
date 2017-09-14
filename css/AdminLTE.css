@@ -2802,3 +2802,10 @@ Component: timeline
 .pace-inactive {
   display: none;
 }
+
+#editSuccess {
+  display: none;
+}
+#editFailed {
+  display: none;
+}

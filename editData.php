@@ -1,4 +1,5 @@
 <?php
+include('function/session.php');
 include('function/core.php');
 $id = $_GET['id'];
 ?>
@@ -19,6 +20,7 @@ $id = $_GET['id'];
     <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -44,14 +46,14 @@ $id = $_GET['id'];
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
-                            <span>Admin<i class="caret"></i></span>
+                            <span><?php echo $login_name ?><i class="caret"></i></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header bg-light-blue">
                                 <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                 <p>
-                                    Admin
+                                    <?php echo $login_name ?>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
@@ -60,7 +62,7 @@ $id = $_GET['id'];
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="function/logout.php" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -115,7 +117,14 @@ $id = $_GET['id'];
 
             <!-- Main content -->
             <section class="content">
-
+                <div id="editSuccess" class="alert alert-success alert-dismissable">                                        
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>Success!</b> Data telah diperbarui. Silahkan refresh page atau kembali ke halaman Tampilkan Data.
+                </div>
+                <div id="editFailed" class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>Failed!</b> Data gagal diperbarui. Silahkan refresh page atau kembali ke halaman Tampilkan Data.
+                </div>
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
@@ -123,6 +132,7 @@ $id = $_GET['id'];
                         <div class="box box-primary">   
                             <div class="box-header">
                                 <h3 class="box-title">Data <?php echo $id; ?></h3>
+                                
                             </div>                        
                             <?php
                             editData($id);
@@ -145,7 +155,7 @@ $id = $_GET['id'];
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="js/AdminLTE/app.js" type="text/javascript"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 </body>
 </html>

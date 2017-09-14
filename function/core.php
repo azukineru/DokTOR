@@ -1,5 +1,4 @@
 <?php
-ob_start();
 
 function insertData($cost_center, $unit, $jenis_dokumen, $program)
 {
@@ -83,12 +82,7 @@ function editData($id)
 			</div>
 			<div class="form-group">
 				<label for="program">Program / Kegiatan</label>
-				<textarea name="program" class="form-control" rows="3">
-					';
-						echo $row['program'];
-					echo 
-					'
-				</textarea>
+				<textarea name="program" class="form-control" rows="3">';echo $row['program'];echo '</textarea>
 			</div>
 			<button type="submit" class="btn btn-default" name="update">Save</button>
 		</div>
@@ -103,9 +97,8 @@ function editData($id)
 		{
 			echo
 			'
-			<script>
-				alert("Data '.$id.' berhasil diubah.");
-				window.location = "editData.php?id='.$id.'";
+			<script>								
+				document.getElementById("editSuccess").style.display = "block";
 			</script>
 			';
 		}
@@ -114,11 +107,12 @@ function editData($id)
 			echo
 			'
 			<script>
-				alert("Data '.$id.' gagal diubah.");
-				window.location = "editData.php?id='.$id.'";
+				document.getElementById("editFailed").style.display = "block";
 			</script>
 			';
 		}
+		
+		
 	}
 
 }
