@@ -20,7 +20,6 @@ $id = $_GET['id'];
     <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -155,7 +154,6 @@ $id = $_GET['id'];
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="js/AdminLTE/app.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 </body>
 </html>

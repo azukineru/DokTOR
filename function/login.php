@@ -3,12 +3,16 @@
 include("database.php");
 
 session_start();
+$error = '';
 
 if(isset($_POST['login']))
 {
 	if(empty($_POST['username']) || empty($_POST['password']))
 	{
-			//some javascript here
+		$error = '<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<b>Username atau Password salah!</b>
+		</div>';
 	}
 	else
 	{
@@ -43,7 +47,10 @@ if(isset($_POST['login']))
 		}
 		else
 		{
-				//some javascript here
+			$error = '<div class="alert alert-danger alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<b>Username atau Password salah!</b>
+			</div>';
 		}
 		mysqli_close($con);
 	}

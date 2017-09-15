@@ -31,8 +31,10 @@ if(isset($_SESSION['login_user']))
 
     <div class="form-box" id="login-box">
         <div class="header">Sign In</div>
+
         <form action="" method="post">
             <div class="body bg-gray">
+                <div><?php echo $error; ?></div>
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username" value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" required/>
                 </div>

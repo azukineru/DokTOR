@@ -18,7 +18,6 @@ include('function/session.php');
     <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -89,12 +88,23 @@ include('function/session.php');
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-table"></i>
-                            <span>Data</span>
+                            <span>Data Dokumentasi</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="viewData.php"><i class="fa fa-angle-double-right"></i>Tampilkan Data</a></li>
-                            <li><a href="insertData.php"><i class="fa fa-angle-double-right"></i>Masukkan Data</a></li>
+                            <li><a href="insertData.php"><i class="fa fa-angle-double-right"></i>Masukkan Data</a></li>                            
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file"></i>
+                            <span>Data File</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="viewFile.php"><i class="fa fa-angle-double-right"></i>Tampilkan File</a></li>
+                            <li><a href="insertFile.php"><i class="fa fa-angle-double-right"></i>Upload File</a></li>                            
                         </ul>
                     </li>
                 </ul>
@@ -155,7 +165,6 @@ include('function/session.php');
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="js/AdminLTE/app.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <!-- page script -->
     <script src="DataTables.js" type="text/javascript"></script>
 

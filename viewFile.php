@@ -1,13 +1,12 @@
 <?php
 include('function/session.php');
-include('function/core.php');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>DokTOR Justifikasi | Insert Data</title>
+    <title>DokTOR Justifikasi | View Data File</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- bootstrap 3.0.2 -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -20,15 +19,9 @@ include('function/core.php');
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
-  </head>
+</head>
 
-  <body class="skin-black">
+<body class="skin-black">
     <!-- header logo: style can be found in header.less -->
     <header class="header">
         <a href="dashboard.php" class="logo">
@@ -95,7 +88,8 @@ include('function/core.php');
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-table"></i>
-                            <span>Data Dokumentasi</span>
+                            <span>Data Doku
+                            mentasi</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
@@ -123,10 +117,13 @@ include('function/core.php');
         <aside class="right-side">
             <!-- Content Header (Page header) -->
             <section class="content-header">
+                <h1>
+                    List File
+                </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li>Data</li>
-                    <li class="active">Masukkan Data</li>
+                    <li class="active">Tampilkan Data</li>
                 </ol>
             </section>
 
@@ -136,54 +133,19 @@ include('function/core.php');
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
-                    <section class="col-lg-6 connectedSortable"> 
-                        <div class="box box-primary">
-                            <div class="box-header">
-                                <h3 class="box-title">Insert Data</h3>
-                            </div>
-                            <form role="form" action="" method="post">
-                                <div class="box-body">
-                                    <div class="form-group">
-                                        <label for="cost_center">Cost Center</label>
-                                        <input type="text" class="form-control" name="cost_center">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="unit">Unit</label>
-                                        <select class="form-control" name="unit">
-                                            <option value="GA">GA</option>
-                                            <option value="IPA">IPA</option>
-                                            <option value="EPD">EPD</option>
-                                            <option value="BPD">BPD</option>
-                                            <option value="OPD">OPD</option>
-                                            <option value="SPD">SPD</option>
-                                            <option value="EPO">EPO</option>
-                                            <option value="BPO">BPO</option>
-                                            <option value="OPO">OPO</option>
-                                            <option value="SPO">SPO</option>
-                                            <option value="CIT">CIT</option>
-                                        </select>                               
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jenis_dokumen">Jenis Dokumen</label>                                            
-                                        <select class="form-control" name="jenis_dokumen">
-                                            <option value="OPEX">OPEX</option>
-                                            <option value="CAPEX">CAPEX</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="program">Program / Kegiatan</label>
-                                        <textarea name="program" class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-default" name="simpan">Submit</button>
-                                </div>
-                            </form>                                         
-                        </div>
-                        <?php
-                        if(isset($_POST["simpan"]))
-                        {
-                            insertData($_POST['cost_center'], $_POST['unit'], $_POST['jenis_dokumen'], $_POST['program']);
-                        }
-                        ?>
+                    <section class="col-lg-12 connectedSortable"> 
+
+                        <table id="tabelFile" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nomor Dokumen</th>
+                                    <th>File TOR dan Dokumentasi</th>
+                                    <th>File Purchase Release (PR)</th>
+                                    <th>File Evaluasi</th>                                    
+                                </tr>
+                            </thead>
+                        </table>                                         
+
                     </section><!-- /.Left col -->
 
                 </div><!-- /.row (main row) -->
@@ -191,9 +153,6 @@ include('function/core.php');
             </section><!-- /.content -->
         </aside><!-- /.right-side -->
     </div><!-- ./wrapper -->
-
-    <!-- add new calendar event modal -->
-
 
     <!-- jQuery 2.0.2 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -203,7 +162,10 @@ include('function/core.php');
     <script src="js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
-    <script src="js/AdminLTE/app.js" type="text/javascript"></script> 
+    <script src="js/AdminLTE/app.js" type="text/javascript"></script>
+    <!-- page script -->
+    <script src="FileTables.js" type="text/javascript"></script>
+
 
 </body>
 </html>
