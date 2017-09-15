@@ -7,7 +7,7 @@ $(document).ready(function() {
         window.location.href = link;
     });
 
-    $('#tabelDok').DataTable( {
+    $('#tabelFile').DataTable( {
         "processing": true,
         "serverSide": true,
         "ajax": {
@@ -15,10 +15,22 @@ $(document).ready(function() {
             "type": "POST"
         },
         "columns": [
-            { "data": "no_dokumen", "width": "5%" },
-            { "data": "file_torjustifikasi" },
-            { "data": "file_pr" },
-            { "data": "file_evaluasi" }
+        { "data": "no_dokumen", "width": "5%" },
+        {  data: "file_torjustifikasi",
+        render: function(data, type, row)
+        {
+            return '<a href="storage/'+data+'">' + data + '</a>';
+        }},
+        {  data: "file_pr",
+        render: function(data, type, row)
+        {
+            return '<a href="storage/'+data+'">' + data + '</a>';
+        }},
+        {  data: "file_evaluasi",
+        render: function(data, type, row)
+        {
+            return '<a href="storage/'+data+'">' + data + '</a>';
+        }}
         ]
     } );
 } );
