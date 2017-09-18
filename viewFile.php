@@ -121,8 +121,8 @@ include('function/session.php');
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li>Data</li>
-                    <li class="active">Tampilkan Data</li>
+                    <li>Data File</li>
+                    <li class="active">Tampilkan File</li>
                 </ol>
             </section>
 
@@ -140,7 +140,8 @@ include('function/session.php');
                                     <th>Nomor Dokumen</th>
                                     <th>File TOR dan Dokumentasi</th>
                                     <th>File Purchase Release (PR)</th>
-                                    <th>File Evaluasi</th>                                    
+                                    <th>File Evaluasi</th>     
+                                    <th>Option</th>                               
                                 </tr>
                             </thead>
                         </table>                                         

@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("#tabelFile").on('click', '.editor_view', function() {
         var id = $(this).closest('tr').find('td').eq(0).text();
         //alert(id);
-        //var link = "/tor/editData.php?id=" + id;
+        var link = "/tor/editFile.php?id=" + id;
         window.location.href = link;
     });
 
@@ -30,7 +30,13 @@ $(document).ready(function() {
         render: function(data, type, row)
         {
             return '<a href="storage/'+data+'">' + data + '</a>';
-        }}
+        }},
+        {   
+            data: null,
+            className: "center",
+            defaultContent: '<a class="editor_view" style="cursor:pointer">Edit</a>',
+            "width": "10%" 
+        }
         ]
     } );
 } );

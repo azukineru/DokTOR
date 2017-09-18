@@ -32,32 +32,47 @@ if(isset($_POST['uploadDok']))
 
 	$folder = "../storage/";
 
-	$sql = "INSERT INTO file_dokumentasi(file_torjustifikasi,ext_torjustifikasi,size_torjustifikasi,file_pr,ext_pr,size_pr,file_evaluasi,ext_evaluasi,size_evaluasi) 
-	VALUES('$fileTor','$fileTor_ext','$fileTor_size','$filePr','$filePr_ext','$filePr_size','$fileEval','$fileEval_ext','$fileEval_size')";
-
-	if($con->query($sql) == TRUE)
+	if( ($fileTor_size < 10000000) && ($filePr_size < 10000000) && ($fileEval_size < 10000000) )
 	{
-		move_uploaded_file($fileTor_loc,$folder.$fileTor);
-		move_uploaded_file($filePr_loc,$folder.$filePr);
-		move_uploaded_file($fileEval_loc,$folder.$fileEval);
-		echo
-		'
-		<script>
-		alert("Data berhasil dimasukkan.");
-		window.location = "../insertFile.php";
-		</script>
-		';
+		$sql = "INSERT INTO file_dokumentasi(file_torjustifikasi,ext_torjustifikasi,size_torjustifikasi,file_pr,ext_pr,size_pr,file_evaluasi,ext_evaluasi,size_evaluasi) 
+		VALUES('$fileTor','$fileTor_ext','$fileTor_size','$filePr','$filePr_ext','$filePr_size','$fileEval','$fileEval_ext','$fileEval_size')";
+
+		if($con->query($sql) == TRUE)
+		{
+			move_uploaded_file($fileTor_loc,$folder.$fileTor);
+			move_uploaded_file($filePr_loc,$folder.$filePr);
+			move_uploaded_file($fileEval_loc,$folder.$fileEval);
+			echo
+			'
+			<script>
+			alert("Data berhasil dimasukkan.");
+			window.location = "../insertFile.php";
+			</script>
+			';
+		}
+		else
+		{
+			echo
+			'
+			<script>
+			alert("Data gagal dimasukkan.");
+			window.location = "../insertFile.php";
+			</script>
+			';
+		}
 	}
 	else
 	{
 		echo
 		'
 		<script>
-		alert("Data gagal dimasukkan.");
+		alert("Data gagal dimasukkan. Ukuran file terlalu besar.");
 		window.location = "../insertFile.php";
 		</script>
 		';
 	}
+
+	
 
 }
 

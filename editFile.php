@@ -1,13 +1,14 @@
 <?php
 include('function/session.php');
 include('function/core.php');
+$id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>DokTOR Justifikasi | Upload File</title>
+    <title>DokTOR Justifikasi | Edit File</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- bootstrap 3.0.2 -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -20,15 +21,9 @@ include('function/core.php');
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
-  </head>
+</head>
 
-  <body class="skin-black">
+<body class="skin-black">
     <!-- header logo: style can be found in header.less -->
     <header class="header">
         <a href="dashboard.php" class="logo">
@@ -126,46 +121,33 @@ include('function/core.php');
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li>Data File</li>
-                    <li class="active">Upload File</li>
+                    <li class="active">Edit File</li>
                 </ol>
             </section>
 
             <!-- Main content -->
             <section class="content">
-
+                <div id="editSuccess" class="alert alert-success alert-dismissable">                                        
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>Success!</b> Data telah diperbarui. Silahkan refresh page atau kembali ke halaman Tampilkan Data.
+                </div>
+                <div id="editFailed" class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>Failed!</b> Data gagal diperbarui. Silahkan refresh page atau kembali ke halaman Tampilkan Data.
+                </div>
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
                     <section class="col-lg-6 connectedSortable"> 
-                        <div class="box box-primary">
+                        <div class="box box-primary">   
                             <div class="box-header">
-                                <h3 class="box-title">Upload File</h3>
-                            </div>
-                            <form role="form" action="function/upload.php" method="post" enctype="multipart/form-data">
-                                <div class="box-body">
-                                    <span>Note: Ukuran maks file 10 mb</span>
-                                    <div class="form-group">
-                                        <label for="file_torjustifikasi">File TOR dan Justifikasi</label>
-                                        <input type="file" class="form-control" name="file_torjustifikasi">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cost_center">File Purchase Release (PR)</label>
-                                        <input type="file" class="form-control" name="file_pr">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cost_center">File Evaluasi</label>
-                                        <input type="file" class="form-control" name="file_evaluasi">
-                                    </div>
-                                    <button type="submit" class="btn btn-default" name="uploadDok">Submit</button>
-                                </div>
-                            </form>                                         
+                                <h3 class="box-title">Data File <?php echo $id; ?></h3>
+                                
+                            </div>                        
+                            <?php
+                            editFile($id);
+                            ?>
                         </div>
-                        <?php
-                        if(isset($_POST["simpan"]))
-                        {
-                            insertData($_POST['cost_center'], $_POST['unit'], $_POST['jenis_dokumen'], $_POST['program']);
-                        }
-                        ?>
                     </section><!-- /.Left col -->
 
                 </div><!-- /.row (main row) -->
@@ -173,9 +155,6 @@ include('function/core.php');
             </section><!-- /.content -->
         </aside><!-- /.right-side -->
     </div><!-- ./wrapper -->
-
-    <!-- add new calendar event modal -->
-
 
     <!-- jQuery 2.0.2 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -185,7 +164,7 @@ include('function/core.php');
     <script src="js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
-    <script src="js/AdminLTE/app.js" type="text/javascript"></script> 
+    <script src="js/AdminLTE/app.js" type="text/javascript"></script>
 
 </body>
 </html>
