@@ -103,17 +103,6 @@ include('function/core.php');
                             <li><a href="insertData.php"><i class="fa fa-angle-double-right"></i>Masukkan Data</a></li>                            
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-file"></i>
-                            <span>Data File</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="viewFile.php"><i class="fa fa-angle-double-right"></i>Tampilkan File</a></li>
-                            <li><a href="insertFile.php"><i class="fa fa-angle-double-right"></i>Upload File</a></li>                            
-                        </ul>
-                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -132,52 +121,88 @@ include('function/core.php');
 
             <!-- Main content -->
             <section class="content">
-
+                <div id="insertSuccess" class="alert alert-success alert-dismissable">                                        
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>Success!</b> Data telah dimasukkan.
+                </div>
+                <div id="insertFailed" class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <b>Failed!</b> Data gagal dimasukkan.
+                </div>
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
-                    <section class="col-lg-6 connectedSortable"> 
-                        <div class="box box-primary">
-                            <div class="box-header">
-                                <h3 class="box-title">Insert Data</h3>
-                            </div>
-                            <form role="form" action="" method="post">
-                                <div class="box-body">
-                                    <div class="form-group">
-                                        <label for="cost_center">Cost Center</label>
-                                        <input type="text" class="form-control" name="cost_center">
+                    <section class="col-lg-12"> 
+                        <form role="form" action="" method="post" enctype="multipart/form-data">
+                            <section class="col-md-6 connectedSortable">
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Insert Data</h3>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="unit">Unit</label>
-                                        <select class="form-control" name="unit">
-                                            <option value="GA">GA</option>
-                                            <option value="IPA">IPA</option>
-                                            <option value="EPD">EPD</option>
-                                            <option value="BPD">BPD</option>
-                                            <option value="OPD">OPD</option>
-                                            <option value="SPD">SPD</option>
-                                            <option value="EPO">EPO</option>
-                                            <option value="BPO">BPO</option>
-                                            <option value="OPO">OPO</option>
-                                            <option value="SPO">SPO</option>
-                                            <option value="CIT">CIT</option>
-                                        </select>                               
+
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label for="cost_center">Cost Center</label>
+                                            <input type="text" class="form-control" name="cost_center">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="unit">Unit</label>
+                                            <select class="form-control" name="unit">
+                                                <option value="GA">GA</option>
+                                                <option value="IPA">IPA</option>
+                                                <option value="EPD">EPD</option>
+                                                <option value="BPD">BPD</option>
+                                                <option value="OPD">OPD</option>
+                                                <option value="SPD">SPD</option>
+                                                <option value="EPO">EPO</option>
+                                                <option value="BPO">BPO</option>
+                                                <option value="OPO">OPO</option>
+                                                <option value="SPO">SPO</option>
+                                                <option value="CIT">CIT</option>
+                                            </select>                               
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="jenis_dokumen">Jenis Dokumen</label>                                            
+                                            <select class="form-control" name="jenis_dokumen">
+                                                <option value="OPEX">OPEX</option>
+                                                <option value="CAPEX">CAPEX</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="program">Program / Kegiatan</label>
+                                            <textarea name="program" class="form-control" rows="3"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="jenis_dokumen">Jenis Dokumen</label>                                            
-                                        <select class="form-control" name="jenis_dokumen">
-                                            <option value="OPEX">OPEX</option>
-                                            <option value="CAPEX">CAPEX</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="program">Program / Kegiatan</label>
-                                        <textarea name="program" class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-default" name="simpan">Submit</button>
                                 </div>
-                            </form>                                         
-                        </div>
+                            </section>
+                            <section class="col-md-6 connectedSortable">
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Upload File</h3>
+                                    </div>
+
+                                    <div class="box-body">
+                                        <span>Note: Ukuran maks file 10 mb</span>
+                                        <div class="form-group">
+                                            <label for="file_torjustifikasi">File TOR dan Justifikasi</label>
+                                            <input type="file" class="form-control" name="file_torjustifikasi">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cost_center">File Purchase Release (PR)</label>
+                                            <input type="file" class="form-control" name="file_pr">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cost_center">File Evaluasi</label>
+                                            <input type="file" class="form-control" name="file_evaluasi">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-default" name="simpan">Submit</button>
+                            </div>
+                            
+                        </form>
                         <?php
                         if(isset($_POST["simpan"]))
                         {

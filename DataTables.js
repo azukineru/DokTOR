@@ -16,11 +16,26 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "no_dokumen", "width": "5%" },
-            { "data": "tanggal_dokumen", "width": "10%" },
-            { "data": "cost_center", "width": "10%" },
-            { "data": "unit", "width": "10%" },
+            { "data": "tanggal_dokumen", "width": "5%" },
+            { "data": "cost_center", "width": "5%" },
+            { "data": "unit", "width": "5%" },
             { "data": "jenis_dokumen", "width": "10%" },
-            { "data": "program", "width": "45%" },
+            { "data": "program", "width": "35%" },
+            { data: "file_torjustifikasi",
+            render: function(data, type, row)
+            {
+                return '<a href="storage/'+data+'">Download</a>'
+            }},
+            { data: "file_pr",
+            render: function(data, type, row)
+            {
+                return '<a href="storage/'+data+'">Download</a>'
+            }},
+            { data: "file_evaluasi",
+            render: function(data, type, row)
+            {
+                return '<a href="storage/'+data+'">Download</a>'
+            }},
             {   
                 data: null,
                 className: "center",

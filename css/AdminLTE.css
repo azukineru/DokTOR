@@ -2803,6 +2803,12 @@ Component: timeline
   display: none;
 }
 
+#insertSuccess {
+  display: none;
+}
+#insertFailed {
+  display: none;
+}
 #editSuccess {
   display: none;
 }

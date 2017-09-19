@@ -34,7 +34,10 @@ $columns = array(
     array( 'db' => 'cost_center',   'dt' => 'cost_center' ),
     array( 'db' => 'unit',     'dt' => 'unit' ),
     array( 'db' => 'jenis_dokumen',     'dt' => 'jenis_dokumen' ),
-    array( 'db' => 'program',     'dt' => 'program' )
+    array( 'db' => 'program',     'dt' => 'program' ),
+    array( 'db' => 'file_torjustifikasi', 'dt' => 'file_torjustifikasi' ),
+    array( 'db' => 'file_pr', 'dt' => 'file_pr' ),
+    array( 'db' => 'file_evaluasi', 'dt' => 'file_evaluasi' )
 );
  
 // SQL server connection information

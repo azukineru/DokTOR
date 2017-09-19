@@ -111,17 +111,6 @@ include('function/session.php');
                             <li><a href="insertData.php"><i class="fa fa-angle-double-right"></i>Masukkan Data</a></li>                            
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-file"></i>
-                            <span>Data File</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="viewFile.php"><i class="fa fa-angle-double-right"></i>Tampilkan File</a></li>
-                            <li><a href="insertFile.php"><i class="fa fa-angle-double-right"></i>Upload File</a></li>                            
-                        </ul>
-                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->

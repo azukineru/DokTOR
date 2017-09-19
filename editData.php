@@ -90,7 +90,7 @@ $id = $_GET['id'];
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-table"></i>
-                            <span>Data</span>
+                            <span>Data Dokumentasi</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
@@ -127,18 +127,11 @@ $id = $_GET['id'];
                 <!-- Main row -->
                 <div class="row">
                     <!-- Left col -->
-                    <section class="col-lg-6 connectedSortable"> 
-                        <div class="box box-primary">   
-                            <div class="box-header">
-                                <h3 class="box-title">Data <?php echo $id; ?></h3>
-                                
-                            </div>                        
+                             
                             <?php
                             editData($id);
                             ?>
-                        </div>
-                    </section><!-- /.Left col -->
-
+                       
                 </div><!-- /.row (main row) -->
 
             </section><!-- /.content -->
