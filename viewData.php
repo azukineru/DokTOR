@@ -1,13 +1,15 @@
 <?php
 include('function/session.php');
+include('function/core.php');
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>DokTOR Justifikasi | View Data</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name=Generator content="Microsoft Excel 11">
     <!-- bootstrap 3.0.2 -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
@@ -122,7 +124,6 @@ include('function/session.php');
                 <div class="row">
                     <!-- Left col -->
                     <section class="col-lg-12 connectedSortable"> 
-
                         <table id="tabelDok" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -139,9 +140,13 @@ include('function/session.php');
                                 </tr>
                             </thead>
                         </table>                                         
-
                     </section><!-- /.Left col -->
+                    <section class="col-lg-12 connectedSortable">
+                        <form role="form" target="_blank" action="function/download.php" method="post">
+                            <button class="btn btn-primary btn-flat" name="download">Download Excel</button>
+                        </form>
 
+                    </section>
                 </div><!-- /.row (main row) -->
 
             </section><!-- /.content -->
@@ -149,7 +154,7 @@ include('function/session.php');
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.0.2 -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <!-- DATA TABES SCRIPT -->

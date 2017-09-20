@@ -199,7 +199,7 @@ include('function/core.php');
                                 </div>
                             </section>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-default" name="simpan">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-flat" name="simpan">Submit</button>
                             </div>
                             
                         </form>

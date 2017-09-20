@@ -167,7 +167,7 @@ function editData($id)
 			</div>
 		</section>
 		<div class="col-md-12">
-			<button type="submit" class="btn btn-default" name="update">Save</button>
+			<button type="submit" class="btn btn-primary btn-flat" name="update">Save</button>
 		</div>
 	</form>
 	';

@@ -2,7 +2,6 @@ $(document).ready(function() {
 
     $("#tabelDok").on('click', '.editor_view', function() {
         var id = $(this).closest('tr').find('td').eq(0).text();
-        //alert(id);
         var link = "/tor/editData.php?id=" + id;
         window.location.href = link;
     });
