@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2017 at 10:59 AM
+-- Generation Time: Sep 22, 2017 at 05:41 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dokumentasi` (
   `no_dokumen` int(11) NOT NULL,
-  `tanggal_dokumen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tanggal_dokumen` date NOT NULL,
   `cost_center` varchar(10) NOT NULL,
   `unit` varchar(20) NOT NULL,
   `jenis_dokumen` varchar(20) NOT NULL,
@@ -43,6 +43,13 @@ CREATE TABLE `dokumentasi` (
   `ext_evaluasi` varchar(10) DEFAULT NULL,
   `size_evaluasi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dokumentasi`
+--
+
+INSERT INTO `dokumentasi` (`no_dokumen`, `tanggal_dokumen`, `cost_center`, `unit`, `jenis_dokumen`, `program`, `file_torjustifikasi`, `ext_torjustifikasi`, `size_torjustifikasi`, `file_pr`, `ext_pr`, `size_pr`, `file_evaluasi`, `ext_evaluasi`, `size_evaluasi`) VALUES
+(1, '2017-09-22', 'F3434', 'OPD', 'OPEX', '4343434343', '1-10216-3572011809930004.pdf', 'pdf', 97781, '1-AST-0169965_Anatomy-of-a-mobile-app-ebook.pdf', 'pdf', 2753006, '1-AST-0181451_Hitachi_CloudTransformation.pdf', 'pdf', 2158540);
 
 -- --------------------------------------------------------
 
@@ -88,7 +95,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `dokumentasi`
 --
 ALTER TABLE `dokumentasi`
-  MODIFY `no_dokumen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

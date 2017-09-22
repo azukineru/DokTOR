@@ -1,0 +1,6 @@
+1. Copy semua file dan letakkan pada server
+2. Create new database pada DBMS ( contoh : phpmyAdmin ). Beri nama db_doktor
+3. Import database. Browse folder db, di dalamnya terdapat file db_doktor.sql. Pilih file tersebut.
+4. Buka folder function, dan buka file connection.php. Ubah username dan password sesuai dengan autentikasi yang digunakan pada server
+5. Buka file dokumentasi_grid.php. Ubah juga username dan password sesuai dengan autentikasi yang digunakan pada server
+6. Akses web melalui browser ( Contoh : http://10.86.50.50/tor/index.php )
