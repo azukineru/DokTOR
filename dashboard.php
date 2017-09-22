@@ -195,20 +195,20 @@ include('function/core.php');
     <script>
         $(document).ready(function(){
             $.ajax({
-                url: "http://localhost/tor/function/chart.php",
+                url: "function/chart.php",
                 method: "GET",
                 success: function(data) {
                     console.log(data);
-                    var player = [];
-                    var score = [];
+                    var tanggal = [];
+                    var jumlah = [];
 
                     for(var i in data) {
-                        player.push(data[i].tanggal);
-                        score.push(data[i].count);
+                        tanggal.push(data[i].tanggal);
+                        jumlah.push(data[i].count);
                     }
 
                     var chartdata = {
-                        labels: player,
+                        labels: tanggal,
                         datasets : [
                         {
                             label: 'Document Submission',                            
@@ -216,7 +216,7 @@ include('function/core.php');
                             borderColor: 'rgba(200, 200, 200, 0.75)',
                             hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
                             hoverBorderColor: 'rgba(200, 200, 200, 1)',
-                            data: score
+                            data: jumlah
                         }
                         ]
                     };
