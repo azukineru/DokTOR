@@ -8,7 +8,7 @@ if(isset($_SESSION['login_user']))
 ?>
 
 <!DOCTYPE html>
-<html class="bg-black">
+<html class="bg-navy">
 <head>
     <meta charset="UTF-8">
     <title>DokTOR Justifikasi | Log in</title>
@@ -27,11 +27,13 @@ if(isset($_SESSION['login_user']))
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
   </head>
-  <body class="bg-black">
-
+  <body class="bg-navy">
+    <div class="col-md-12">
+        <br>
+        <h3 class="box-title text-center">Dokumentasi TOR dan Justifikasi</h3>
+    </div>
     <div class="form-box" id="login-box">
         <div class="header">Sign In</div>
-
         <form action="" method="post">
             <div class="body bg-gray">
                 <div><?php echo $error; ?></div>
@@ -47,9 +49,7 @@ if(isset($_SESSION['login_user']))
                 </div>
             </div>
         </form>
-
     </div>
-
 
     <!-- jQuery 2.0.2 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

@@ -1,5 +1,6 @@
 <?php
 include('function/session.php');
+include('function/core.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,22 +12,9 @@ include('function/session.php');
     <!-- bootstrap 3.0.2 -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
-    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
-    <link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- fullCalendar -->
-    <link href="css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
-    <!-- Daterange picker -->
-    <link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />    
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -140,10 +128,10 @@ include('function/session.php');
                         <div class="small-box bg-aqua">
                             <div class="inner">
                                 <h3>
-                                    150
+                                    <?php showNumDocs(); ?>
                                 </h3>
                                 <p>
-                                    Jumlah Dokumen
+                                    Total Jumlah Dokumen
                                 </p>
                             </div>
                             <div class="icon">
@@ -160,100 +148,29 @@ include('function/session.php');
                 <div class="row">
                     <!-- Left col -->
                     <section class="col-lg-12 connectedSortable"> 
-                        <!-- Box (with bar chart) -->
+
                         <div class="box box-danger" id="loading-example">
                             <div class="box-header">
                                 <!-- tools box -->
-                                <div class="pull-right box-tools">
-                                    <button class="btn btn-danger btn-sm refresh-btn" data-toggle="tooltip" title="Reload"><i class="fa fa-refresh"></i></button>
+                                <div class="pull-right box-tools">                                    
                                     <button class="btn btn-danger btn-sm" data-widget='collapse' data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                                     <button class="btn btn-danger btn-sm" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                                 </div><!-- /. tools -->
-                                <i class="fa fa-cloud"></i>
+                                <i class="fa fa-calendar"></i>
 
-                                <h3 class="box-title">Server Load</h3>
+                                <h3 class="box-title">Document Submission per day</h3>
                             </div><!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <div class="row">
                                     <div class="col-sm-7">
                                         <!-- bar chart -->
-                                        <div class="chart" id="bar-chart" style="height: 250px;"></div>
+                                        <div class="chart" id="bar-chart" style="height: auto;">
+                                            <canvas id="ctxdate"></canvas> 
+                                        </div>
                                     </div>
-                                    <div class="col-sm-5">
-                                        <div class="pad">
-                                            <!-- Progress bars -->
-                                            <div class="clearfix">
-                                                <span class="pull-left">Bandwidth</span>
-                                                <small class="pull-right">10/200 GB</small>
-                                            </div>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
-                                            </div>
-
-                                            <div class="clearfix">
-                                                <span class="pull-left">Transfered</span>
-                                                <small class="pull-right">10 GB</small>
-                                            </div>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 70%;"></div>
-                                            </div>
-
-                                            <div class="clearfix">
-                                                <span class="pull-left">Activity</span>
-                                                <small class="pull-right">73%</small>
-                                            </div>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-light-blue" style="width: 70%;"></div>
-                                            </div>
-
-                                            <div class="clearfix">
-                                                <span class="pull-left">FTP</span>
-                                                <small class="pull-right">30 GB</small>
-                                            </div>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 70%;"></div>
-                                            </div>
-                                            <!-- Buttons -->
-                                            <p>
-                                                <button class="btn btn-default btn-sm"><i class="fa fa-cloud-download"></i> Generate PDF</button>
-                                            </p>
-                                        </div><!-- /.pad -->
-                                    </div><!-- /.col -->
                                 </div><!-- /.row - inside box -->
                             </div><!-- /.box-body -->
-                            <div class="box-footer">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                        <input type="text" class="knob" data-readonly="true" value="80" data-width="60" data-height="60" data-fgColor="#f56954"/>
-                                        <div class="knob-label">CPU</div>
-                                    </div><!-- ./col -->
-                                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                                        <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#00a65a"/>
-                                        <div class="knob-label">Disk</div>
-                                    </div><!-- ./col -->
-                                    <div class="col-xs-4 text-center">
-                                        <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#3c8dbc"/>
-                                        <div class="knob-label">RAM</div>
-                                    </div><!-- ./col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.box-footer -->
-                        </div><!-- /.box -->        
-
-                        <!-- Custom tabs (Charts with tabs)-->
-                        <div class="nav-tabs-custom">
-                            <!-- Tabs within a box -->
-                            <ul class="nav nav-tabs pull-right">
-                                <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-                                <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-                                <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
-                            </ul>
-                            <div class="tab-content no-padding">
-                                <!-- Morris chart - Sales -->
-                                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-                            </div>
-                        </div><!-- /.nav-tabs-custom -->                                            
-
+                        </div><!-- /.box -->                                                
                     </section><!-- /.Left col -->
 
                 </div><!-- /.row (main row) -->
@@ -267,35 +184,73 @@ include('function/session.php');
 
     <!-- jQuery 2.0.2 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <!-- jQuery UI 1.10.3 -->
     <script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- Morris.js charts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="js/plugins/morris/morris.min.js" type="text/javascript"></script>
-    <!-- Sparkline -->
-    <script src="js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
-    <!-- jvectormap -->
-    <script src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-    <script src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-    <!-- fullCalendar -->
-    <script src="js/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="js/plugins/jqueryKnob/jquery.knob.js" type="text/javascript"></script>
-    <!-- daterangepicker -->
-    <script src="js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-
     <!-- AdminLTE App -->
-    <script src="js/AdminLTE/app.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="js/AdminLTE/app.js" type="text/javascript"></script>  
 
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="js/AdminLTE/dashboard.js" type="text/javascript"></script>        
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: "http://localhost/tor/function/chart.php",
+                method: "GET",
+                success: function(data) {
+                    console.log(data);
+                    var player = [];
+                    var score = [];
+
+                    for(var i in data) {
+                        player.push(data[i].tanggal);
+                        score.push(data[i].count);
+                    }
+
+                    var chartdata = {
+                        labels: player,
+                        datasets : [
+                        {
+                            label: 'Document Submission',                            
+                            backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                            borderColor: 'rgba(200, 200, 200, 0.75)',
+                            hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                            data: score
+                        }
+                        ]
+                    };
+
+                    var ctx = $("#ctxdate");
+
+                    var barGraph = new Chart(ctx, {
+                        type: 'bar',
+                        data: chartdata,
+                        options: {
+                            barThickness: 1,
+                            scales: {
+                                xAxes: [{
+                                    barPercentage: 0.4
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    ticks: {
+                                        suggestedMin: 0,
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+
+
+                    });
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

@@ -34,7 +34,7 @@ function insertData($cost_center, $unit, $jenis_dokumen, $program)
 
 	if( ($fileTor_size < 10000000) && ($filePr_size < 10000000) && ($fileEval_size < 10000000) )
 	{
-		$query = "INSERT INTO dokumentasi (cost_center, unit, jenis_dokumen, program, file_torjustifikasi, ext_torjustifikasi, size_torjustifikasi, file_pr, ext_pr, size_pr, file_evaluasi, ext_evaluasi, size_evaluasi) VALUES ('".$cost_center."', '".$unit."', '".$jenis_dokumen."', '".$program."', '".$fileTor."', '".$fileTor_ext."', '".$fileTor_size."', '".$filePr."', '".$filePr_ext."', '".$filePr_size."', '".$fileEval."', '".$fileEval_ext."', '".$fileEval_size."' )";
+		$query = "INSERT INTO dokumentasi (tanggal_dokumen, cost_center, unit, jenis_dokumen, program, file_torjustifikasi, ext_torjustifikasi, size_torjustifikasi, file_pr, ext_pr, size_pr, file_evaluasi, ext_evaluasi, size_evaluasi) VALUES (CURDATE(), '".$cost_center."', '".$unit."', '".$jenis_dokumen."', '".$program."', '".$fileTor."', '".$fileTor_ext."', '".$fileTor_size."', '".$filePr."', '".$filePr_ext."', '".$filePr_size."', '".$fileEval."', '".$fileEval_ext."', '".$fileEval_size."' )";
 
 
 		if($con->query($query) == TRUE)
@@ -311,6 +311,16 @@ function editData($id)
 			';
 		}
 	}
+}
+
+function showNumDocs()
+{
+	include('database.php');
+
+	$query = mysqli_query($con, "SELECT * FROM dokumentasi");
+	$total=mysqli_num_rows($query);
+
+	echo $total;
 }
 
 ?>

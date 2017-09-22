@@ -109,7 +109,7 @@ $id = $_GET['id'];
             <section class="content-header">
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li>Data</li>
+                    <li>Data Dokumentasi</li>
                     <li class="active">Tampilkan Data</li>
                 </ol>
             </section>
